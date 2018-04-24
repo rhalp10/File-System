@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -18,8 +19,9 @@ public class FileSystem {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // TODO code application logic here
         File_function f_func = new File_function ();
 
@@ -39,6 +41,9 @@ public class FileSystem {
 "8. Unhide directory/file\n" +
 "9. Write to a text file\n" +
 "10. Read text file\n"+
+"11. Create CSV file\n"+
+"12. Read CSV file Using Scanner\n"+
+"13. Read CSV file Using DataOutputStream\n"+
 "0. Exit\n");
             option = sc.nextInt();
             switch (option) {
@@ -98,10 +103,23 @@ public class FileSystem {
                 case 10:
                     f_func.viewfile();
                     break;
+                case 11:
+                    System.out.println("Path Source:");
+                    String user_path11 = sc.next();
+                    f_func.mkFile("C:\\"+user_path11, "employees", ".csv");
+                    break;
+                case 12:
+                    f_func.readCSV();
+                    break;
+                case 13:
+                    f_func.readCSV1();
+                    break;
+                    
                 default:
                     System.out.println("Invalid input!");
             }
         } while (option != 0);
+        
     }
     
 }
