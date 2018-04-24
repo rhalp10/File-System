@@ -12,7 +12,7 @@ Program Functions:
 7.	Hide directory/file
 8.	Unhide directory/file
 9.	Write to a text file
-10.Read text file
+10. Read text file
 11. Create CSV file
 12. Read CSV file Using Scanner
 13. Read CSV file Using DataOutputStream
