@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -21,7 +22,7 @@ public class FileSystem {
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here
         File_function f_func = new File_function ();
 
@@ -42,8 +43,10 @@ public class FileSystem {
 "9. Write to a text file\n" +
 "10. Read text file\n"+
 "11. Create CSV file\n"+
-"12. Read CSV file Using Scanner\n"+
-"13. Read CSV file Using DataOutputStream\n"+
+"12. Read CSV file Record Using Scanner\n"+
+"13. Read CSV file Record Using DataOutputStream\n"+
+"14. Search CSV file Record by Row ID \n"+
+"15. Append New Record On CSV File \n"+
 "0. Exit\n");
             option = sc.nextInt();
             switch (option) {
@@ -85,7 +88,7 @@ public class FileSystem {
                     f_func.moveFile(src2, dest1);
                     break;
                 case 7:
-//                    f_func.mkDirectory("C:\\sample");
+                    f_func.mkDirectory("C:\\sample");
                     break;
                 case 8:
                     
@@ -104,9 +107,9 @@ public class FileSystem {
                     f_func.viewfile();
                     break;
                 case 11:
-                    System.out.println("Path Source:");
-                    String user_path11 = sc.next();
-                    f_func.mkFile("C:\\"+user_path11, "employees", ".csv");
+                    f_func.mkDirectory("C:\\sample");
+                    f_func.mkFile("C:\\sample", "employees", ".csv");
+                    System.out.println("Salary:");
                     break;
                 case 12:
                     f_func.readCSV();
@@ -114,7 +117,21 @@ public class FileSystem {
                 case 13:
                     f_func.readCSV1();
                     break;
-                    
+                case 14:
+                    f_func.searchbyID();
+                    break;
+               case 15:
+                    System.out.println("Enter name:");
+                    String Name = sc.next();
+                    System.out.println("Enter age:");
+                    int Age = sc.nextInt();
+                    System.out.println("Enter position:");
+                    String Job = sc.next();
+                    System.out.println("Enter salary:");
+                    double Salary = sc.nextDouble();
+                    f_func.addemployee(f_func.genID(),Name,Age,Job,Salary);
+                   
+                    break;
                 default:
                     System.out.println("Invalid input!");
             }
